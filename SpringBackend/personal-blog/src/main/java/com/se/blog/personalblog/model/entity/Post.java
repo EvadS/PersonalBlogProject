@@ -1,6 +1,7 @@
 package com.se.blog.personalblog.model.entity;
 
 
+import com.se.blog.personalblog.constraint.PublishingDateConstraint;
 import com.se.blog.personalblog.model.audit.AuditModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +34,15 @@ public class Post extends AuditModel {
     @NotNull
     @Lob
     private String content;
+
+    @NotNull
+    private String previewText;
+
+    @NotNull
+    private  String previewImgPath;
+
+    @PublishingDateConstraint
+    private Date publishingDate;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
