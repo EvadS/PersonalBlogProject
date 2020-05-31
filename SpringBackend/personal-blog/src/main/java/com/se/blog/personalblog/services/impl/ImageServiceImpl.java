@@ -72,7 +72,7 @@ public class ImageServiceImpl implements ImageService {
         // TODO: previewFilePath to file
         BufferedImage croppedBufferedImage = storageService.createPreview(filePreviewPath.toString(), previewHeight, previewWidth);
         String previewFilePath = storageService.storePreviewFile(croppedBufferedImage, filePreviewPath.toString());
-
+        // TODO : add logger
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/" + fileStorageProperties.getImageResource() + "/")
                 .path(previewImageName)

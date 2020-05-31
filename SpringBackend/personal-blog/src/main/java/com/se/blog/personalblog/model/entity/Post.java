@@ -3,12 +3,17 @@ package com.se.blog.personalblog.model.entity;
 
 import com.se.blog.personalblog.constraint.PublishingDateConstraint;
 import com.se.blog.personalblog.model.audit.AuditModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +22,8 @@ import java.util.Set;
 @Table(name = "posts")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class Post extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +48,9 @@ public class Post extends AuditModel {
     @NotNull
     private  String previewImgPath;
 
-    @PublishingDateConstraint
-    private Date publishingDate;
+   // @PublishingDateConstraint
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime publishingDate;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {

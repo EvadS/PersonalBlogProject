@@ -1,5 +1,6 @@
 package com.se.blog.personalblog.services;
 
+import com.se.blog.personalblog.model.PostTag;
 import com.se.blog.personalblog.model.entity.Post;
 import com.se.blog.personalblog.model.response.PostResponse;
 import org.springframework.data.domain.Page;
@@ -9,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface PostService {
     Page<Post> getPagePosts(Pageable pageable);
 
-    Post createPost(Post post);
+    Post createPost(PostTag post);
 
     Post updatePost(Long postId, Post post);
 

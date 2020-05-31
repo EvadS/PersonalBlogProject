@@ -9,5 +9,4 @@ public class PostRequest {
     private String title;
     private String description;
     private  String content;
-
 }

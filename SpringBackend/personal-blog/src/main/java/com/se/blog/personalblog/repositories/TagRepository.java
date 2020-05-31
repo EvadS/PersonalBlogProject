@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface TagRepository extends JpaRepository<Tag, Long> {
     Page<Tag> findAll(Pageable pageable);
 
-    Optional<Tag> findByName(String tagName);
+    Tag   getByName(String tagName);
 
     Optional<Tag> findById (Long tagID);
 }

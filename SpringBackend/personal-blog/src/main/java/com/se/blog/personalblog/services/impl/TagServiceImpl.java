@@ -42,10 +42,10 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Tag createTag(TagRequest tagRequest) {
-        Optional<Tag> tag = tagRepository.findByName(tagRequest.getTagName());
-        if (tag.isPresent())
-            return tag.get();
-
+        Tag tag = tagRepository.getByName(tagRequest.getTagName());
+        if (tag!=null) {
+            return tag;
+        }
         Tag newTag = new Tag();
         newTag.setName(tagRequest.getTagName());
 
